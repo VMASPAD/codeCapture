@@ -27,7 +27,7 @@ interface CodeEditorProps {
     currentPadding?: string
 }
 
-function CodeEditor({languaje,theme,icon,background,currentPadding}) {
+function CodeEditor({languaje,theme,icon,background,currentPadding} : CodeEditorProps) {
 
     const [width, setWidth] = useState(1000)
     const [height, setHeight] = useState<number | null>(500)
@@ -51,7 +51,7 @@ function CodeEditor({languaje,theme,icon,background,currentPadding}) {
         setWidth(window.innerWidth)
     }
 
-    const handleResize = (evt,direction,ref,pos) => {
+    const handleResize = (ref : any) => {
         const newHeight = ref.style.height
         setHeight(parseInt(newHeight,10))
     }
@@ -98,6 +98,9 @@ function CodeEditor({languaje,theme,icon,background,currentPadding}) {
     <div className='input-control w-full'>
     <input type='text' value={`${title}${extension}`} onChange={(e) => handleTitleChange(e)} className='w-full text-[hsla(0,0%,100%,.6)]  outline-none font-medium 
                 text-center bg-transparent' style={{lineHeight:"1.8rem"}}/>
+    </div>
+    <div className='flex justify-center items-center p1 bg-black bg-opacity-30 rounded-sm'>
+      <img src={icon} className='w-8'/>
     </div>
 </div>
     <AceEditor 
